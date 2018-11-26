@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.action.extension" value="html"/>
+    <!--设置编码，解决中文乱码-->
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <!--设置struts标签主题-->
+    <constant name="struts.ui.theme" value="simple"/>
+
+
+    <package name="pet" namespace="/" extends="struts-default,json-default">
+        <global-results>
+            <result name="error">/WEB-INF/pages/error.jsp</result>
+        </global-results>
+
+        <action name="getAllPet" class="petAction" method="getAllPet">
+            <result type="json">
+                <param name="root">tableData</param>
+            </result>
+        </action>
+        <action name="getAllRecord" class="petAction" method="getAllRecord">
+            <result type="json">
+                <param name="root">tableData</param>
+            </result>
+        </action>
+
+
+        <action name="index" class="petAction" method="index">
+            <result name="success">/WEB-INF/pages/index.jsp</result>
+        </action>
+        <action name="pet" class="petAction" method="pet">
+            <result name="success">/WEB-INF/pages/pet.jsp</result>
+        </action>
+    </package>
+</struts>
